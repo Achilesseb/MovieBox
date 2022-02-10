@@ -36,14 +36,17 @@ const SearchBox = () => {
       <Link to="/homepage" className="homepage-link" onClick={clearState}>
         MovieBox
       </Link>
+
       <form className="form" onSubmit={fetchData}>
-        <input
-          onChange={onChange}
-          className="input"
-          type="search"
-          placeholder="Search your movie here!"
-          value={searchField}
-        ></input>
+        <Link to="movies" className="input-link">
+          <input
+            onChange={onChange}
+            className="input"
+            type="search"
+            placeholder="Search your movie here!"
+            value={searchField}
+          ></input>
+        </Link>
       </form>
     </div>
   );

@@ -3,6 +3,7 @@
   width: 100%;
   display: flex;
   border-radius: 2vh;
+  justify-content: space-evenly;
   background-image: linear-gradient(
     to right,
     #314755 0%,
@@ -15,7 +16,7 @@
 .form {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-self: center;
 }
 .homepage-link {
   text-decoration: none;
@@ -23,19 +24,21 @@
   font-size: 4vw;
   font-family: "Titillium Web", sans-serif;
   display: flex;
-  align-items: center;
+  align-self: center;
   color: white;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .input {
   width: 40vw;
-  height: 70%;
+  height: 100%;
   background-color: #282c34;
   color: white;
   border-radius: 1vh;
-  font-size: 3vh;
+  font-size: 2vh;
   text-align: center;
+  padding: 2vh;
 }
 .input-link {
-  text-decoration: none;
+  width: 100%;
+  height: 100%;
 }

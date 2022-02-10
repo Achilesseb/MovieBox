@@ -12,3 +12,14 @@
   height: 100%;
   width: 100%;
 }
+.movies-list {
+  padding: 3vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  max-width: 90vw;
+  width: 100%;
+  row-gap: 2vh;
+}
