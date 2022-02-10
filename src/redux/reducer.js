@@ -4,6 +4,9 @@ const movieReducer = (state = initialState, action) => {
     case "FETCH_MOVIE_SUCCES": {
       return action.payload;
     }
+    case "CLEAR_MOVIE_STATE": {
+      return initialState;
+    }
     default:
       return state;
   }

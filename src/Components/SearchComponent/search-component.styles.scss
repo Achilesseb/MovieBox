@@ -9,26 +9,33 @@
     #26a0da 51%,
     #314755 100%
   );
+
   margin-top: 0.5vh;
 }
 .form {
   width: 100%;
   display: flex;
+  align-items: center;
 }
-.label {
+.homepage-link {
+  text-decoration: none;
   width: 100%;
   font-size: 4vw;
   font-family: "Titillium Web", sans-serif;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  color: white;
+  justify-content: space-evenly;
 }
 .input {
-  width: 50%;
+  width: 40vw;
   height: 70%;
   background-color: #282c34;
   color: white;
   border-radius: 1vh;
   font-size: 3vh;
   text-align: center;
+}
+.input-link {
+  text-decoration: none;
 }

@@ -7,7 +7,6 @@
   align-items: center;
   min-height: 100vh;
   height: 100%;
-  row-gap: 5vh;
 }
 .App-header {
   min-height: 10vh;
@@ -20,13 +19,15 @@
   color: white;
 }
 .header-content {
+  padding: 3vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  max-width: 80vw;
+  flex-wrap: wrap;
+  max-width: 90vw;
   width: 100%;
-  row-gap: 5vh;
+  row-gap: 2vh;
 }
 .App-header-solo {
   width: 100%;
