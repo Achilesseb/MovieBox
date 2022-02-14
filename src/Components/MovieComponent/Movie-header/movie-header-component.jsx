@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function MovieHeader() {
   const data = useSelector((data) => data);
+  console.log(data);
 
   return (
     <div className="movies-list">

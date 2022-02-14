@@ -1,15 +1,29 @@
 import "./App.scss";
 import SearchBox from "./Components/SearchComponent/search-component";
-import MovieHeader from "./Components/MovieComponent/Movie-header.jsx/movie-header-component";
+import MovieHeader from "./Components/MovieComponent/Movie-header/movie-header-component";
 import { useSelector } from "react-redux";
-import Intro from "./Components/IntroComponent/intro-component";
+import Intro from "./Components/IntroComponent/homePage-component";
 import { Routes, Route } from "react-router-dom";
-import SpecificMovie from "./Components/MovieComponent/Movie-specific/movieSpecific-component";
+import SpecificMovie from "./Components/MovieComponent/Movie-specific/movieSpecific-header/movieSpecific-component";
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
+import { useState } from "react";
 
 function App() {
   const data = useSelector((data) => data);
   console.log(data);
-
+  // if (data.length === 0) {
+  //   return (
+  //     <div className="App">
+  //       <header className="App-header">
+  //         <SearchBox />
+  //       </header>
+  //       <div className="waiting-content">
+  //         <ClipLoader size={150} />
+  //       </div>
+  //     </div>
+  //   );
+  // }
   if (data.length !== 0)
     return (
       <div className="App">
@@ -17,25 +31,13 @@ function App() {
           <SearchBox />
         </header>
         <Routes>
-          <Route exact path="/movies" element={<MovieHeader />} />
+          <Route path="/homepage" element={<Intro />} />
+          <Route exact path="/homepage/:id" element={<SpecificMovie />} />
+          <Route path="/movies" element={<MovieHeader />} />
           <Route exact path="/movies/:id" element={<SpecificMovie />} />
         </Routes>
-        {/* <div className="header-content">{<MovieHeader />}</div> */}
       </div>
     );
-  if (data.length === 0 || data.Response === "False") {
-    if (data.Response === "False") alert(data.Error);
-    return (
-      <div className="App">
-        <header className="App-header">
-          <SearchBox />
-        </header>
-        <div className="waiting-content">
-          <Intro />
-        </div>
-      </div>
-    );
-  }
 }
 
 export default App;

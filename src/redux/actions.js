@@ -6,3 +6,13 @@ export const fetchMovieSucces = (data) => ({
 export const clearMovieState = (data) => ({
   type: "CLEAR_MOVIE_STATE",
 });
+
+export const fetchCastSucces = (data) => ({
+  type: "FETCH_ACTORS_SUCCES",
+  payload: data,
+});
+
+export const fetchPopularSucces = (data) => ({
+  type: "FETCH_POPULAR_SUCCES",
+  payload: data,
+});
