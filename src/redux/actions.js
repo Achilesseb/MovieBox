@@ -16,3 +16,7 @@ export const fetchPopularSucces = (data) => ({
   type: "FETCH_POPULAR_SUCCES",
   payload: data,
 });
+export const fetchTopRatedSucces = (data) => ({
+  type: "FETCH_TOPRATED_SUCCES",
+  payload: data,
+});

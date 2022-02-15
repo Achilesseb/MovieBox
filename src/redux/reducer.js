@@ -1,6 +1,7 @@
 const initialState = {
   movies: [],
   popularMovies: [],
+  topRatedMovies: [],
   actors: [],
 };
 const movieReducer = (state = initialState, action) => {
@@ -18,6 +19,12 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         popularMovies: state.popularMovies.concat(action.payload),
+      };
+    }
+    case "FETCH_TOPRATED_SUCCES": {
+      return {
+        ...state,
+        topRatedMovies: state.topRatedMovies.concat(action.payload),
       };
     }
     default:

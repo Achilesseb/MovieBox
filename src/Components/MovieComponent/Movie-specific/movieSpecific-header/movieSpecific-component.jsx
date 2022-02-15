@@ -16,15 +16,14 @@ const SpecificMovie = () => {
   const { pathname } = useLocation();
   const id = pathname.slice(pathname.lastIndexOf("/") + 1);
   const [data, setData] = useState({});
-  useEffect(
-    () =>
-      fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=4419c2df8d66a246f89be8fd55dd282d`
-      )
-        .then((response) => response.json())
-        .then((res) => setData(res)),
-    []
-  );
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=4419c2df8d66a246f89be8fd55dd282d`
+    )
+      .then((response) => response.json())
+      .then((res) => setData(res));
+  }, []);
   const theme = createTheme();
   return (
     <ThemeProvider theme={theme}>
