@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./movieSpecific.styles.scss";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
@@ -11,18 +10,21 @@ import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MovieSpecificCast from "../movieSpecificCast/movieSpecificCast-component";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSpecificMovie } from "../../../../redux/actions";
 
 const SpecificMovie = () => {
+  const dispatch = useDispatch();
   const { pathname } = useLocation();
   const id = pathname.slice(pathname.lastIndexOf("/") + 1);
-  const [data, setData] = useState({});
+  const data = useSelector((data) => data.specificMovie);
   useEffect(() => {
     window.scrollTo(0, 0);
     return fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=4419c2df8d66a246f89be8fd55dd282d`
     )
       .then((response) => response.json())
-      .then((res) => setData(res));
+      .then((res) => dispatch(fetchSpecificMovie(res)));
   }, []);
   const theme = createTheme();
   return (

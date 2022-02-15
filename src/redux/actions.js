@@ -20,3 +20,8 @@ export const fetchTopRatedSucces = (data) => ({
   type: "FETCH_TOPRATED_SUCCES",
   payload: data,
 });
+
+export const fetchSpecificMovie = (data) => ({
+  type: "FETCH_SPECIFIC_MOVIE",
+  payload: data,
+});

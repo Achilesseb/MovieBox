@@ -11,6 +11,7 @@ const IntroPage = () => {
     require.context("./Posters", false, /\.(png|jpe?g|svg)$/)
   );
   const imagesUrl = Object.values(images);
+
   return (
     <div className="intro-box">
       <h1 className="intro-message">
@@ -18,8 +19,8 @@ const IntroPage = () => {
         {" library you always needed"}
       </h1>
       <div className="intro-collection-posters">
-        {imagesUrl.map((image) => (
-          <img src={`${image}`} className="intro-poster" />
+        {imagesUrl.map((image, index) => (
+          <img src={`${image}`} className="intro-poster" key={index} />
         ))}
       </div>
     </div>

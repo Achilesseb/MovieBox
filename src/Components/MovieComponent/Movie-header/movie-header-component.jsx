@@ -7,13 +7,12 @@ import { CardActionArea } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function MovieHeader() {
-  const data = useSelector((data) => data);
-  console.log(data);
+  const data = useSelector((data) => data.searchMovies);
 
   return (
     <div className="movies-list">
-      {data.map((data) => (
-        <Link to={`${data.id}`}>
+      {data.map((data, index) => (
+        <Link to={`${data.id}`} key={index}>
           <Card className="card">
             <CardActionArea className="card-actionArea">
               <CardMedia

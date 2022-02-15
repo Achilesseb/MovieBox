@@ -9,6 +9,7 @@ import SpecificMovie from "./Components/MovieComponent/Movie-specific/movieSpeci
 
 function App() {
   const data = useSelector((data) => data);
+  console.log(data);
   if (data.length !== 0)
     return (
       <div className="App">
@@ -17,7 +18,12 @@ function App() {
         </header>
         <Routes>
           <Route path="/" element={<IntroPage />} />
-          <Route path="/homepage" element={<HomePage />} />
+          <Route
+            path="/homepage"
+            element={
+              data.searchMovies.length === 0 ? <HomePage /> : <MovieHeader />
+            }
+          />
           <Route exact path="/homepage/:id" element={<SpecificMovie />} />
           <Route path="/movies" element={<MovieHeader />} />
           <Route exact path="/movies/:id" element={<SpecificMovie />} />
