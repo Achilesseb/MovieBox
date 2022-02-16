@@ -12,6 +12,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MovieSpecificCast from "../movieSpecificCast/movieSpecificCast-component";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSpecificMovie } from "../../../../redux/actions";
+import { API_KEY } from "../../../../utils";
 
 const SpecificMovie = () => {
   const dispatch = useDispatch();
@@ -20,9 +21,7 @@ const SpecificMovie = () => {
   const data = useSelector((data) => data.specificMovie);
   useEffect(() => {
     window.scrollTo(0, 0);
-    return fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=4419c2df8d66a246f89be8fd55dd282d`
-    )
+    return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
       .then((response) => response.json())
       .then((res) => dispatch(fetchSpecificMovie(res)));
   }, []);

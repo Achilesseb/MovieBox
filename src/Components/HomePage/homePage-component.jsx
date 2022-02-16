@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import "./intro-component.styles.scss";
 import Album from "./homePage-layout-component";
 import { fetchPopularSucces, fetchTopRatedSucces } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners";
+import { API_KEY } from "../../utils";
 
 const HomePage = () => {
   const checkData = useSelector((data) => data.popularMovies);
-  const POPULAR_URL =
-    "https://api.themoviedb.org/3/movie/popular?api_key=4419c2df8d66a246f89be8fd55dd282d&region=RO&page=1";
-  const TOPRATED_URL =
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=4419c2df8d66a246f89be8fd55dd282d&region=RO&page=1";
+  const POPULAR_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&region=RO&page=1`;
+  const TOPRATED_URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&region=RO&page=1`;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,7 +22,7 @@ const HomePage = () => {
       response.map((response) => response.json())
     );
     return solvePromises.then((promise) =>
-      promise.map((result, index) => {
+      promise.forEach((result, index) => {
         if (index === 0)
           result.then((res) => dispatch(fetchPopularSucces(res)));
         if (index === 1)

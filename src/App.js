@@ -2,8 +2,8 @@ import "./App.scss";
 import { useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import IntroPage from "./Components/IntroPageComponent/introPage-component";
-import HomePage from "./Components/HomePageComponent/homePage-component";
-import SearchBox from "./Components/SearchComponent/search-component";
+import HomePage from "./Components/HomePage/homePage-component";
+import SearchBox from "./Components/Search/search-component";
 import MovieHeader from "./Components/MovieComponent/Movie-header/movie-header-component";
 import SpecificMovie from "./Components/MovieComponent/Movie-specific/movieSpecific-header/movieSpecific-component";
 

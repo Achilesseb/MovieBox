@@ -1,3 +1,7 @@
+This is a personalProject, created in order to develop my programming skills. I thought it would be a nice ideea to have a webpage/ app to search after movies and find informations about them.
+
+Created using MaterialUi and TheMovieDatabase Api.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
