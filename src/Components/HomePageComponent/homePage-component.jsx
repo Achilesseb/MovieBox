@@ -8,19 +8,17 @@ import { ClipLoader } from "react-spinners";
 
 const HomePage = () => {
   const checkData = useSelector((data) => data.popularMovies);
-  const POPULAR_URL = fetch(
-    "https://api.themoviedb.org/3/movie/popular?api_key=4419c2df8d66a246f89be8fd55dd282d&region=RO&page=1"
-  );
-
-  const TOPRATED_URL = fetch(
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=4419c2df8d66a246f89be8fd55dd282d&region=RO&page=1"
-  );
-
-  const fetchData = Promise.all([POPULAR_URL, TOPRATED_URL]);
+  const POPULAR_URL =
+    "https://api.themoviedb.org/3/movie/popular?api_key=4419c2df8d66a246f89be8fd55dd282d&region=RO&page=1";
+  const TOPRATED_URL =
+    "https://api.themoviedb.org/3/movie/top_rated?api_key=4419c2df8d66a246f89be8fd55dd282d&region=RO&page=1";
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (checkData.length === 1) return;
+    const fetchPopular = fetch(POPULAR_URL);
+    const fetchTopRated = fetch(TOPRATED_URL);
+    const fetchData = Promise.all([fetchPopular, fetchTopRated]);
     const solvePromises = fetchData.then((response) =>
       response.map((response) => response.json())
     );
