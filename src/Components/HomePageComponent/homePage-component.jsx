@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners";
 
 const HomePage = () => {
+  const checkData = useSelector((data) => data.popularMovies);
   const POPULAR_URL = fetch(
     "https://api.themoviedb.org/3/movie/popular?api_key=4419c2df8d66a246f89be8fd55dd282d&region=RO&page=1"
   );
@@ -17,7 +18,9 @@ const HomePage = () => {
 
   const fetchData = Promise.all([POPULAR_URL, TOPRATED_URL]);
   const dispatch = useDispatch();
+
   useEffect(() => {
+    if (checkData.length === 1) return;
     const solvePromises = fetchData.then((response) =>
       response.map((response) => response.json())
     );
@@ -30,6 +33,7 @@ const HomePage = () => {
       })
     );
   }, []);
+
   const data = useSelector((data) => data);
   const { popularMovies } = data;
   const { topRatedMovies } = data;

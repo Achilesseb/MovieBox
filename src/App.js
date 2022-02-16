@@ -17,13 +17,19 @@ function App() {
           <SearchBox />
         </header>
         <Routes>
-          <Route path="/" element={<IntroPage />} />
+          <Route
+            path="/"
+            element={
+              data.searchMovies.length === 0 ? <IntroPage /> : <MovieHeader />
+            }
+          />
           <Route
             path="/homepage"
             element={
               data.searchMovies.length === 0 ? <HomePage /> : <MovieHeader />
             }
           />
+          <Route exact path="/:id" element={<SpecificMovie />} />
           <Route exact path="/homepage/:id" element={<SpecificMovie />} />
           <Route path="/movies" element={<MovieHeader />} />
           <Route exact path="/movies/:id" element={<SpecificMovie />} />
