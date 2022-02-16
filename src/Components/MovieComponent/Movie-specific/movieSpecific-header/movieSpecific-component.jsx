@@ -12,7 +12,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MovieSpecificCast from "../movieSpecificCast/movieSpecificCast-component";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSpecificMovie } from "../../../../redux/actions";
-import { API_KEY } from "../../../../utils";
+import { API_KEY } from "../../../../api_key.js";
+
 
 const SpecificMovie = () => {
   const dispatch = useDispatch();

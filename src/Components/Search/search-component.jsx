@@ -3,6 +3,7 @@ import "./search-component.styles.scss";
 import { fetchMovieSucces, clearMovieState } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchSearch } from "../../utils";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
@@ -10,9 +11,8 @@ const SearchBox = () => {
   const fetchData = (e) => {
     dispatch(clearMovieState());
     e.preventDefault();
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=4419c2df8d66a246f89be8fd55dd282d&query=${searchField}&include_adult=true`
-    )
+    const fetchedData = fetchSearch(searchField);
+    fetchedData
       .then((response) => {
         return response.json();
       })

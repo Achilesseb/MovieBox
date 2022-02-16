@@ -5,18 +5,13 @@ import Album from "./homePage-layout-component";
 import { fetchPopularSucces, fetchTopRatedSucces } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners";
-import { API_KEY } from "../../utils";
+import { fetchPopular, fetchTopRated } from "../../utils";
 
 const HomePage = () => {
   const checkData = useSelector((data) => data.popularMovies);
-  const POPULAR_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&region=RO&page=1`;
-  const TOPRATED_URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&region=RO&page=1`;
   const dispatch = useDispatch();
-
   useEffect(() => {
     if (checkData.length === 1) return;
-    const fetchPopular = fetch(POPULAR_URL);
-    const fetchTopRated = fetch(TOPRATED_URL);
     const fetchData = Promise.all([fetchPopular, fetchTopRated]);
     const solvePromises = fetchData.then((response) =>
       response.map((response) => response.json())

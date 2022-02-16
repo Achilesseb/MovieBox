@@ -19,21 +19,18 @@ import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
 import { fetchCastSucces } from "../../../../redux/actions";
-
+import { fetchActors } from "../../../../utils";
 
 const MovieSpecificCast = (data) => {
   const id = data;
   const [movieCast, setCast] = useState();
   const dispatch = useDispatch();
-  useEffect(
-    () =>
-      fetch(
-        `https://api.themoviedb.org/3/movie/${id.props}/credits?api_key=4419c2df8d66a246f89be8fd55dd282d`
-      )
-        .then((response) => response.json())
-        .then((res) => dispatch(fetchCastSucces(res))),
-    []
-  );
+  useEffect(() => {
+    const actorsData = fetchActors(id);
+    return actorsData
+      .then((response) => response.json())
+      .then((res) => dispatch(fetchCastSucces(res)));
+  }, []);
   const theme = createTheme();
   console.log(movieCast);
   const ActorCard = () =>
