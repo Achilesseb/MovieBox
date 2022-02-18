@@ -6,6 +6,10 @@ Created using MaterialUi and TheMovieDatabase Api.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Before running this project you must add your api key. To do this rename the "api_key.js.default" file to "api_key.js" and inside it add your own MovieDB api key.
+In case you don't have an api key you can generate one on their website [The Movie DB](https://www.themoviedb.org/documentation/api).
+After you added your api key you can start the application.
+
 ## Available Scripts
 
 In the project directory, you can run:

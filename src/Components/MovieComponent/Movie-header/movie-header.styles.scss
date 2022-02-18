@@ -30,7 +30,6 @@
   row-gap: 2vh;
 }
 .popularMovie-card {
-  height: 60vh;
   width: 13vw;
   display: flex;
   flex-direction: column;
@@ -40,6 +39,7 @@
   box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.25);
   transition: 0.2s all;
   border-radius: 2vh;
+  min-width: 200px;
 }
 
 .movies-list:hover .card {

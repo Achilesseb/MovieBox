@@ -17,13 +17,12 @@ const theme = createTheme();
 
 export default function Album(props) {
   const data = props.props[0];
-  const [page, setPage] = useState(0);
+
   const [pageMovies, setPageMovies] = useState((pageNumber = 0) =>
     data[0].results.slice(pageNumber * 6, (pageNumber + 1) * 6)
   );
-  const handleClickEvent = (e) => {
-    e.preventDefault();
-    const pageNumber = Number(e.target.textContent) - 1;
+  const handleClickEvent = (event, newPage) => {
+    const pageNumber = newPage - 1;
     setPageMovies(data[0].results.slice(pageNumber * 6, (pageNumber + 1) * 6));
   };
   return (
@@ -41,38 +40,26 @@ export default function Album(props) {
         </Toolbar>
       </AppBar>
       <main>
-        <Container sx={{ py: 2, height: "90vh" }} maxWidth="100%">
+        <Container
+          sx={{
+            py: 2,
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          maxWidth="100%"
+        >
           <Grid
             className="popularMovie-wrap"
             container
             spacing={1}
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "noWrap",
               overflow: "hidden",
             }}
           >
-            {pageMovies.map((movie, index) => (
-              <Grid item key={index} xs={0} sm={2} md={0}>
-                <Link to={`${movie.id}`} className="popularMovie-card">
-                  <CardMedia
-                    component="img"
-                    sx={{}}
-                    image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                    alt="random"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      className="popularMovie-title"
-                    >
-                      {movie.title}
-                    </Typography>
-                  </CardContent>
-                </Link>
-              </Grid>
+            {pageMovies.map((movie) => (
+              <Movie movie={movie} />
             ))}
           </Grid>
           <Pagination
@@ -80,10 +67,48 @@ export default function Album(props) {
             hideNextButton
             className="popularMovies-pagination"
             count={Math.ceil(data[0].results.length / 6)}
-            onClick={handleClickEvent}
+            onChange={handleClickEvent}
           />
         </Container>
       </main>
     </ThemeProvider>
   );
 }
+
+const Movie = ({ movie }) => {
+  const [loading, setLoading] = useState(true);
+  const onLoad = () => {
+    setLoading(false);
+  };
+
+  return (
+    <Grid
+      item
+      key={movie.id}
+      xs={0}
+      sm={2}
+      md={0}
+      sx={{
+        display: "flex",
+      }}
+    >
+      <Link to={`${movie.id}`} className="popularMovie-card">
+        {loading && <h1>Loading</h1>}
+        <CardMedia
+          component="img"
+          sx={{
+            display: loading ? "none" : "unset",
+          }}
+          image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt="random"
+          onLoad={onLoad}
+        />
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography gutterBottom variant="h6" className="popularMovie-title">
+            {movie.title}
+          </Typography>
+        </CardContent>
+      </Link>
+    </Grid>
+  );
+};

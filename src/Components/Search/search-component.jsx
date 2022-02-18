@@ -4,6 +4,7 @@ import { fetchMovieSucces, clearMovieState } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSearch } from "../../utils";
+import HomeIcon from "@mui/icons-material/Home";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const SearchBox = () => {
   };
   return (
     <div className="search-bar">
-      <Link to="/homepage" className="homepage-link" onClick={clearState}>
+      <Link to="/" className="introPage-link" onClick={clearState}>
         MovieBox
       </Link>
       <form className="form" onSubmit={fetchData}>
@@ -42,6 +43,10 @@ const SearchBox = () => {
           value={searchField}
         ></input>
       </form>
+      <Link to="/homepage" className="homepage-link">
+        {" "}
+        <HomeIcon fontSize="large" />
+      </Link>
     </div>
   );
 };
