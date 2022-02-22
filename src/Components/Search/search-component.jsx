@@ -30,7 +30,7 @@ const SearchBox = () => {
   };
   return (
     <div className="search-bar">
-      <Link to="/" className="introPage-link" onClick={clearState}>
+      <Link to="/homepage" className="introPage-link" onClick={clearState}>
         MovieBox
       </Link>
       <form className="form" onSubmit={fetchData}>
@@ -43,7 +43,7 @@ const SearchBox = () => {
           value={searchField}
         ></input>
       </form>
-      <Link to="/homepage" className="homepage-link">
+      <Link to="/" className="homepage-link">
         {" "}
         <HomeIcon fontSize="large" />
       </Link>

@@ -18,6 +18,7 @@ const movieReducer = (state = initialState, action) => {
         ...state,
         searchMovies: [],
         specificMovie: {},
+        actors: [],
       };
     }
     case "FETCH_SPECIFIC_MOVIE": {
@@ -36,6 +37,12 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         topRatedMovies: state.topRatedMovies.concat(action.payload),
+      };
+    }
+    case "FETCH_ACTORS_SUCCES": {
+      return {
+        ...state,
+        actors: state.actors.concat(action.payload),
       };
     }
     default:

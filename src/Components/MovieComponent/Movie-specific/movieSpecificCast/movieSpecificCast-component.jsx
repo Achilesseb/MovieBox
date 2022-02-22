@@ -10,8 +10,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
@@ -20,57 +18,57 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
 import { fetchCastSucces } from "../../../../redux/actions";
 import { fetchActors } from "../../../../utils";
+import { useSelector } from "react-redux";
 
 const MovieSpecificCast = (data) => {
-  const id = data;
-  const [movieCast, setCast] = useState();
+  const id = Number(data.props);
+  const creditsData = useSelector((data) => data.actors);
   const dispatch = useDispatch();
   useEffect(() => {
-    const actorsData = fetchActors(id);
-    return actorsData
-      .then((response) => response.json())
-      .then((res) => dispatch(fetchCastSucces(res)));
+    if (creditsData.length === 0) {
+      const actorsData = fetchActors(id);
+      return actorsData
+        .then((response) => response.json())
+        .then((res) => {
+          console.log(res);
+          return dispatch(fetchCastSucces(res));
+        });
+    }
   }, []);
   const theme = createTheme();
-  console.log(movieCast);
+
   const ActorCard = () =>
-    movieCast
+    creditsData[0].cast
       .filter((cast, index) => index < 11)
       .map((cast, index) => (
-        <Grid item key={index} xs={12} sm={6} md={4}>
+        <Grid item key={index} xs={6} sm={4} md={2}>
           <Card
+            className="actor-card"
             sx={{
               height: "100%",
-              display: "flex",
-              flexDirection: "column",
+              backgroundColor: "rgb(0, 30, 60)",
+              color: "white",
             }}
           >
+            <Typography gutterBottom variant="h5" component="h2">
+              {cast.character.replace("/", "")}
+            </Typography>
             <CardMedia
               component="img"
               sx={{
                 // 16:9
-                pt: "56.25%",
+                pt: "10.25%",
               }}
-              image="https://source.unsplash.com/random"
+              image={`https://image.tmdb.org/t/p/w500${cast.profile_path}`}
               alt="random"
             />
             <CardContent sx={{ flexGrow: 1 }}>
-              <Typography gutterBottom variant="h5" component="h2">
-                Heading
-              </Typography>
-              <Typography>
-                This is a media card. You can use this section to describe the
-                content.
-              </Typography>
+              <Typography>{cast.original_name}</Typography>
             </CardContent>
-            <CardActions>
-              <Button size="small">View</Button>
-              <Button size="small">Edit</Button>
-            </CardActions>
           </Card>
         </Grid>
       ));
-
+  if (creditsData.length === 0) return <div>Loading</div>;
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -83,9 +81,17 @@ const MovieSpecificCast = (data) => {
         </Toolbar>
       </AppBar>
       <main>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          <Grid container spacing={4}>
-            {/* <ActorCard /> */}
+        <Container
+          sx={{
+            py: 2,
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "no-wrap",
+          }}
+          maxWidth="100%"
+        >
+          <Grid container spacing={2}>
+            <ActorCard />
           </Grid>
         </Container>
       </main>

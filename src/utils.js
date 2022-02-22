@@ -13,3 +13,5 @@ export const fetchSearch = (searchField) =>
   );
 export const fetchActors = (id) =>
   fetch(`${MOVIE_URL}/${id}/credits?api_key=${API_KEY}`);
+export const fetchMovie = (id) =>
+  fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`);

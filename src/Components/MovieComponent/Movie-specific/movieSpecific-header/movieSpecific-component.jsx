@@ -11,9 +11,8 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MovieSpecificCast from "../movieSpecificCast/movieSpecificCast-component";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSpecificMovie } from "../../../../redux/actions";
-import { API_KEY } from "../../../../api_key.js";
-
+import { fetchSpecificMovie, fetchCastSucces } from "../../../../redux/actions";
+import { fetchMovie, fetchActors } from "../../../../utils";
 
 const SpecificMovie = () => {
   const dispatch = useDispatch();
@@ -22,7 +21,7 @@ const SpecificMovie = () => {
   const data = useSelector((data) => data.specificMovie);
   useEffect(() => {
     window.scrollTo(0, 0);
-    return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
+    fetchMovie(id)
       .then((response) => response.json())
       .then((res) => dispatch(fetchSpecificMovie(res)));
   }, []);
@@ -61,7 +60,7 @@ const SpecificMovie = () => {
         <Grid
           item
           xs={false}
-          sm={4}
+          sm={8}
           md={6}
           component={Paper}
           elevation={10}
@@ -70,19 +69,20 @@ const SpecificMovie = () => {
           <Box
             sx={{
               my: 10,
-              mx: 10,
+              mx: 5,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "space-evenly",
-              height: "60vh",
+              maxHeight: "60vh",
+              height: "100%",
             }}
           >
             <Typography
               component="h1"
               variant="h3"
               sx={{
-                fontSize: "2em",
+                fontSize: "2 rem",
               }}
             >
               {data.title}
@@ -94,7 +94,7 @@ const SpecificMovie = () => {
               component="h1"
               variant="h5"
               sx={{
-                fontSize: "1.2em",
+                fontSize: "1.2rem",
               }}
             >
               {data.overview}

@@ -3,7 +3,7 @@ export const fetchMovieSucces = (data) => ({
   payload: data,
 });
 
-export const clearMovieState = (data) => ({
+export const clearMovieState = () => ({
   type: "CLEAR_MOVIE_STATE",
 });
 
