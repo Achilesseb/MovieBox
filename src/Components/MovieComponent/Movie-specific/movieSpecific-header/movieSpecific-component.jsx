@@ -11,14 +11,17 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MovieSpecificCast from "../movieSpecificCast/movieSpecificCast-component";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSpecificMovie, fetchCastSucces } from "../../../../redux/actions";
+import {
+  fetchSpecificMovie,
+  fetchCastSucces,
+} from "../../../../redux/movieSlice/movie-actions";
 import { fetchMovie, fetchActors } from "../../../../utils";
 
 const SpecificMovie = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const id = pathname.slice(pathname.lastIndexOf("/") + 1);
-  const data = useSelector((data) => data.specificMovie);
+  const data = useSelector((data) => data.movie.specificMovie);
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchMovie(id)

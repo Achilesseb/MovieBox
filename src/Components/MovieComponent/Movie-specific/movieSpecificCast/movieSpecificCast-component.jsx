@@ -16,13 +16,13 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
-import { fetchCastSucces } from "../../../../redux/actions";
+import { fetchCastSucces } from "../../../../redux/movieSlice/movie-actions";
 import { fetchActors } from "../../../../utils";
 import { useSelector } from "react-redux";
 
 const MovieSpecificCast = (data) => {
   const id = Number(data.props);
-  const creditsData = useSelector((data) => data.actors);
+  const creditsData = useSelector((data) => data.movie.actors);
   const dispatch = useDispatch();
   useEffect(() => {
     if (creditsData.length === 0) {

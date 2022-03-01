@@ -4,6 +4,7 @@ const initialState = {
   topRatedMovies: [],
   actors: [],
   specificMovie: {},
+  user: {},
 };
 const movieReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -43,6 +44,12 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         actors: state.actors.concat(action.payload),
+      };
+    }
+    case "CREATE_USER_PROFILE": {
+      return {
+        ...state,
+        user: action.payload,
       };
     }
     default:

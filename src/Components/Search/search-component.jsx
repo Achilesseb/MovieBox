@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./search-component.styles.scss";
-import { fetchMovieSucces, clearMovieState } from "../../redux/actions";
+import { fetchMovieSucces, clearMovieState } from "../../redux/movieSlice/movie-actions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSearch } from "../../utils";
-import HomeIcon from "@mui/icons-material/Home";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
@@ -43,9 +43,9 @@ const SearchBox = () => {
           value={searchField}
         ></input>
       </form>
-      <Link to="/" className="homepage-link">
+      <Link to="/signin" className="homepage-link">
         {" "}
-        <HomeIcon fontSize="large" />
+        <AccountBoxIcon fontSize="large" />
       </Link>
     </div>
   );

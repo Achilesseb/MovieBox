@@ -7,7 +7,7 @@ import { CardActionArea } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function MovieHeader() {
-  const data = useSelector((data) => data.searchMovies);
+  const data = useSelector((data) => data.movie.searchMovies);
 
   return (
     <div className="movies-list">

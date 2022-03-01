@@ -25,3 +25,7 @@ export const fetchSpecificMovie = (data) => ({
   type: "FETCH_SPECIFIC_MOVIE",
   payload: data,
 });
+export const createUser = (data) => ({
+  type: "CREATE_USER_PROFILE",
+  payload: data,
+});

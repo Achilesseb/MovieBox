@@ -2,13 +2,16 @@ import React from "react";
 import { useEffect } from "react";
 import "./intro-component.styles.scss";
 import Album from "./homePage-layout-component";
-import { fetchPopularSucces, fetchTopRatedSucces } from "../../redux/actions";
+import {
+  fetchPopularSucces,
+  fetchTopRatedSucces,
+} from "../../redux/movieSlice/movie-actions";
 import { useDispatch, useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners";
 import { fetchPopular, fetchTopRated } from "../../utils";
 
 const HomePage = () => {
-  const checkData = useSelector((data) => data.popularMovies);
+  const checkData = useSelector((data) => data.movie.popularMovies);
   const dispatch = useDispatch();
   useEffect(() => {
     if (checkData.length === 1) return;
@@ -26,7 +29,7 @@ const HomePage = () => {
     );
   }, []);
 
-  const data = useSelector((data) => data);
+  const data = useSelector((data) => data.movie);
   const { popularMovies } = data;
   const { topRatedMovies } = data;
   if (popularMovies.length === 0 || topRatedMovies.length === 0)
