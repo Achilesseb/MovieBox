@@ -1,33 +1,35 @@
 .card {
-  height: 60vh;
-  width: 20vw;
+  height: 10vh;
+  width: 90vw;
   display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  background-color: rgb(0, 30, 60);
-  color: white;
+  flex-direction: row;
   box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.25);
   transition: 0.2s all;
   border-radius: 2vh;
 }
+.specificMovie {
+  text-decoration: none;
+}
 .card-actionArea {
-  width: 100%;
   height: 100%;
+  max-width: 20vw;
+  width: 100%;
+  text-decoration: none;
 }
 .card-image {
   height: 100%;
+  max-width: 20vw;
   width: 100%;
 }
 .movies-list {
-  padding: 3vh;
+  padding: 2vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
   flex-wrap: wrap;
   max-width: 90vw;
   width: 100%;
-  row-gap: 2vh;
+  row-gap: 1vh;
 }
 .popularMovie-card {
   width: 13vw;
@@ -40,8 +42,8 @@
   transition: 0.2s all;
   border-radius: 2vh;
   min-width: 200px;
+ 
 }
-
 .movies-list:hover .card {
   filter: blur(1px);
   opacity: 0.5;
@@ -53,4 +55,17 @@
   filter: blur(0px);
   opacity: 1;
   box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
+}
+.card-title {
+  font-size: 3.5vh;
+  word-spacing: 3px;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  display: flex;
+  color: white;
+  max-width: 80vw;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Titillium Web", sans-serif;
 }

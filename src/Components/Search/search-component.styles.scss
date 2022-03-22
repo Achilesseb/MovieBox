@@ -57,7 +57,17 @@
 }
 .homepage-link {
   text-decoration: none;
-  max-width: 1vw;
   width: 100%;
   color: white;
+  display: flex;
+  justify-content: center;
+}
+.current-user {
+  font-size: 2vh;
+}
+.searchBar-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
 }

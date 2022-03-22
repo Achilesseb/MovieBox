@@ -16,8 +16,7 @@ import "firebase/compat/auth";
 import { auth } from "../../firebase.config";
 import { useState } from "react";
 import { Copyright } from "./copyright";
-import CustomButton from "../custom-button/custom-button.component";
-import { signInWithGoogle } from "../../firebase.config";
+
 
 const theme = createTheme();
 
@@ -96,9 +95,7 @@ export default function SignIn() {
             >
               Sign In
             </Button>
-            <CustomButton onClick={signInWithGoogle}>
-              SIGN UP WITH GOOGLE
-            </CustomButton>
+          
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

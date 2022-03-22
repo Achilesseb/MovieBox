@@ -12,14 +12,17 @@ import { useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { createUserProfileDocument } from "./firebase.config";
 import { setCurrentUser } from "./redux/userSlice/user-actions";
-
+import { useDispatch } from "react-redux";
 function App() {
+  const dispatch = useDispatch();
   const data = useSelector((data) => data);
   console.log(data);
   const auth = getAuth();
+  console.log(auth);
   let unsubscribefromAuth;
   useEffect(() => {
     unsubscribefromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      console.log(auth.currentUser);
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot((snapshot) => {
@@ -30,7 +33,7 @@ function App() {
             },
           });
         });
-        setCurrentUser(userAuth);
+        dispatch(setCurrentUser(userAuth));
       }
     });
   }, []);
