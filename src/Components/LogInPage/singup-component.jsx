@@ -3,8 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -12,22 +10,30 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Copyright } from "./copyright";
+import { Copyright } from "../Copyright/copyright";
 import { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { createUserProfileDocument } from "../../firebase.config";
 import CustomButton from "../custom-button/custom-button.component";
 import { signInWithGoogle } from "../../firebase.config";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
-export default function SignUp() {
+const SignUp = () => {
+  const navigate = useNavigate();
+  const data = useSelector((data) => data.user.currentUser);
   const auth = getAuth();
   const [account, setUser] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
+  });
+  useEffect(() => {
+    if (data !== null) return navigate("/homepage");
   });
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -40,7 +46,7 @@ export default function SignUp() {
     });
 
     const { firstName, lastName, email, password } = account;
-    const displayName = `${firstName + " " + lastName}`;
+    const displayName = String(`${firstName + " " + lastName}`);
 
     try {
       const { user } = await createUserWithEmailAndPassword(
@@ -89,6 +95,7 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  type="text"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -99,6 +106,7 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  type="text"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -121,14 +129,6 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
                 />
               </Grid>
             </Grid>
@@ -156,4 +156,6 @@ export default function SignUp() {
       </Container>
     </ThemeProvider>
   );
-}
+};
+
+export default SignUp;

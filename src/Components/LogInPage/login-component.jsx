@@ -14,15 +14,23 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "firebase/compat/auth";
 import { auth } from "../../firebase.config";
-import { useState } from "react";
-import { Copyright } from "./copyright";
-
+import { useState, useEffect } from "react";
+import { Copyright } from "../Copyright/copyright";
+import CustomButton from "../custom-button/custom-button.component";
+import { signInWithGoogle } from "../../firebase.config";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const theme = createTheme();
 
 export default function SignIn() {
+  const data = useSelector((data) => data.user.currentUser);
+  const navigate = useNavigate();
   const [user, setUser] = useState({ email: "", password: "" });
   const { email, password } = user;
+  useEffect(() => {
+    if (data !== null) return navigate("/homepage");
+  });
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -60,7 +68,7 @@ export default function SignIn() {
             component="form"
             onSubmit={handleSubmit}
             noValidate
-            sx={{ mt: 1 }}
+            sx={{ mt: 1, display: "flex", flexDirection: "column" }}
           >
             <TextField
               margin="normal"
@@ -95,7 +103,9 @@ export default function SignIn() {
             >
               Sign In
             </Button>
-          
+            <CustomButton onClick={signInWithGoogle}>
+              SIGN IN WITH GOOGLE
+            </CustomButton>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

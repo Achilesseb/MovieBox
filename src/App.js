@@ -1,6 +1,6 @@
 import "./App.scss";
 import { useSelector } from "react-redux";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Redirect } from "react-router-dom";
 import IntroPage from "./Components/IntroPageComponent/introPage-component";
 import HomePage from "./Components/HomePage/homePage-component";
 import SearchBox from "./Components/Search/search-component";
@@ -16,15 +16,13 @@ import { useDispatch } from "react-redux";
 function App() {
   const dispatch = useDispatch();
   const data = useSelector((data) => data);
-  console.log(data);
   const auth = getAuth();
-  console.log(auth);
   let unsubscribefromAuth;
   useEffect(() => {
     unsubscribefromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      console.log(auth.currentUser);
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
+
         userRef.onSnapshot((snapshot) => {
           setCurrentUser({
             currentUser: {
@@ -33,8 +31,8 @@ function App() {
             },
           });
         });
-        dispatch(setCurrentUser(userAuth));
       }
+      dispatch(setCurrentUser(userAuth));
     });
   }, []);
   useEffect(() => {
@@ -69,7 +67,7 @@ function App() {
               )
             }
           />
-          <Route exact path="/signin" element={<SignIn />} />
+          <Route exact path="/signin" element={<SignIn />}></Route>
           <Route exact path="/signup" element={<SignUp />} />
           <Route exact path="/:id" element={<SpecificMovie />} />
           <Route exact path="/homepage/:id" element={<SpecificMovie />} />

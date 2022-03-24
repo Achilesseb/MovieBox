@@ -17,6 +17,7 @@ const theme = createTheme();
 
 export default function Album(props) {
   const data = props.props[0];
+  console.log(data);
 
   const [pageMovies, setPageMovies] = useState((pageNumber = 0) =>
     data[0].results.slice(pageNumber * 6, (pageNumber + 1) * 6)
@@ -32,7 +33,7 @@ export default function Album(props) {
         position="relative"
         sx={{ width: "inherit", backgroundColor: "inherit" }}
       >
-        <Toolbar className="intro-tabs">
+        <Toolbar className="intro-tabs" sx={{ zIndex: "0" }}>
           <MovieFilterIcon sx={{ mr: 2 }} />
           <Typography variant="h5" color="inherit" noWrap>
             {props.props[1]}
@@ -59,7 +60,7 @@ export default function Album(props) {
             }}
           >
             {pageMovies.map((movie) => (
-              <Movie movie={movie} />
+              <Movie movie={movie} key={movie.id} />
             ))}
           </Grid>
           <Pagination
@@ -84,7 +85,6 @@ const Movie = ({ movie }) => {
   return (
     <Grid
       item
-      key={movie.id}
       xs={0}
       sm={2}
       md={0}

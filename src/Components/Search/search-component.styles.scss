@@ -57,6 +57,7 @@
 }
 .homepage-link {
   text-decoration: none;
+  min-width: 15vw;
   width: 100%;
   color: white;
   display: flex;
@@ -70,4 +71,13 @@
   flex-direction: column;
   justify-content: center;
   align-self: center;
+}
+.dropbox-searchBar {
+  position: absolute;
+  margin-left: 68vw;
+  margin-top: 41vh;
+  z-index: 1;
+}
+span {
+  cursor: pointer;
 }
