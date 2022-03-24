@@ -1,6 +1,7 @@
 import React from "react";
 import "./introPage.styles.scss";
 
+
 const IntroPage = () => {
   function importAll(r) {
     let images = {};

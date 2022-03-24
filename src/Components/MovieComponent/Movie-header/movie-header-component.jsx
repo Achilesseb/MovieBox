@@ -27,7 +27,7 @@ export default function MovieHeader() {
                 alt={`${data.original_title}`}
               />
             </CardActionArea>
-            <Typography className="card-title" sx={{ fontSize: "1.5em" }}>
+            <Typography className="card-title">
               <span> {data.original_title}</span>
               <span> {`${new Date(data.release_date).getFullYear()}`}</span>
             </Typography>

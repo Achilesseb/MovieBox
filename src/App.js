@@ -1,6 +1,6 @@
 import "./App.scss";
 import { useSelector } from "react-redux";
-import { Routes, Route, Redirect } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import IntroPage from "./Components/IntroPageComponent/introPage-component";
 import HomePage from "./Components/HomePage/homePage-component";
 import SearchBox from "./Components/Search/search-component";
@@ -13,6 +13,7 @@ import { getAuth } from "firebase/auth";
 import { createUserProfileDocument } from "./firebase.config";
 import { setCurrentUser } from "./redux/userSlice/user-actions";
 import { useDispatch } from "react-redux";
+import Copyright from "./Components/Copyright/copyright";
 function App() {
   const dispatch = useDispatch();
   const data = useSelector((data) => data);
@@ -74,6 +75,9 @@ function App() {
           <Route path="/movies" element={<MovieHeader />} />
           <Route exact path="/movies/:id" element={<SpecificMovie />} />
         </Routes>
+        <Copyright
+          sx={{ display: "flex", alignSelf: "self-end", mt: 8, mb: 4 }}
+        />
       </div>
     );
 }

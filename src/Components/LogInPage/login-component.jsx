@@ -15,7 +15,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "firebase/compat/auth";
 import { auth } from "../../firebase.config";
 import { useState, useEffect } from "react";
-import { Copyright } from "../Copyright/copyright";
 import CustomButton from "../custom-button/custom-button.component";
 import { signInWithGoogle } from "../../firebase.config";
 import { useNavigate } from "react-router-dom";
@@ -120,7 +119,6 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );
