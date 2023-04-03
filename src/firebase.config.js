@@ -3,7 +3,7 @@ import "firebase/compat/firestore";
 import "firebase/compat/auth";
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyBcTHJxMkDq17N7NodijLomJR_-PbPEiUQ",
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: "movie-box-f85f1.firebaseapp.com",
   projectId: "movie-box-f85f1",
   storageBucket: "movie-box-f85f1.appspot.com",
@@ -11,14 +11,16 @@ export const firebaseConfig = {
   appId: "1:506807973528:web:3458daa3081270db1382ed",
 };
 firebase.initializeApp(firebaseConfig);
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
   const userRef = firestore.doc(`users/${userAuth.uid}`);
-  console.log(userRef);
   const snapshot = await userRef.get();
+
   if (!snapshot.exists) {
     const { displayName, email } = userAuth;
     const createAt = new Date();
+
     try {
       await userRef.set({
         displayName,
@@ -35,8 +37,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
-console.log(firestore);
+
 const provider = new firebase.auth.GoogleAuthProvider();
+
 provider.setCustomParameters({ prompt: "select_account" });
+
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
 export default firebase;
