@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import './intro-component.styles.scss';
-import Album from './homePage-layout-component';
+import './HomePage.styles.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { ClipLoader } from 'react-spinners';
 import {
@@ -8,6 +7,7 @@ import {
   fetchTopRatedSucces,
 } from '../../../redux/movieSlice/movie-actions';
 import { fetchPopular, fetchTopRated } from '../../../utils';
+import Album from '../../Album/Album';
 
 export const HomePage = () => {
   // const [searchField, setSearchField] = useState('');
@@ -60,6 +60,7 @@ export const HomePage = () => {
         </div>
       </div>
     );
+
   return (
     <div className="MB-landingPage">
       <Album props={[popularMovies, 'POPULAR right now']} />

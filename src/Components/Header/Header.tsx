@@ -22,7 +22,7 @@ export const MBHeader = () => {
   }
   return (
     <>
-      <div className=" flex h-[6rem] w-full justify-start bg-[#1b1b1bef]">
+      <div className="header">
         <div className="relative h-full w-[380px]">
           <div className="courtain">
             <div className="courtain-left">
