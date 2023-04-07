@@ -1,45 +1,45 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import "./search-component.styles.scss";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import './search-component.styles.scss';
 import {
   fetchMovieSucces,
   clearMovieState,
-} from "../../redux/movieSlice/movie-actions";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchSearch } from "../../utils";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import { Avatar } from "@mui/material";
-import DropBox from "../DropBox/dropBox-main-component";
+} from '../../../redux/movieSlice/movie-actions';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchSearch } from '../../../utils';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { Avatar } from '@mui/material';
+import DropBox from '../DropBox/dropBox-main-component';
 
 const SearchBox = () => {
-  const data = useSelector((data) => data.user);
+  const data = useSelector(data => data.user);
   const dispatch = useDispatch();
-  const [searchField, setSearch] = useState("");
-  const [dropBoxStatus, setDropBoxStatus] = useState("hidden");
-  const fetchData = (e) => {
+  const [searchField, setSearch] = useState('');
+  const [dropBoxStatus, setDropBoxStatus] = useState('hidden');
+  const fetchData = e => {
     dispatch(clearMovieState());
     e.preventDefault();
     const fetchedData = fetchSearch(searchField);
     fetchedData
-      .then((response) => {
+      .then(response => {
         return response.json();
       })
-      .then((res) => dispatch(fetchMovieSucces(res.results)))
-      .catch((err) => {
+      .then(res => dispatch(fetchMovieSucces(res.results)))
+      .catch(err => {
         console.log(err);
       });
 
-    setSearch("");
+    setSearch('');
   };
   const clearState = () => {
     dispatch(clearMovieState());
   };
 
   const toggleDropBoxStatus = () =>
-    dropBoxStatus === "hidden"
-      ? setDropBoxStatus("show")
-      : setDropBoxStatus("hidden");
+    dropBoxStatus === 'hidden'
+      ? setDropBoxStatus('show')
+      : setDropBoxStatus('hidden');
   return (
     <div className="search-bar">
       <Link to="/homepage" className="introPage-link" onClick={clearState}>
@@ -48,7 +48,7 @@ const SearchBox = () => {
       <form className="form" onSubmit={fetchData}>
         <input
           autoFocus
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={e => setSearch(e.target.value)}
           className="input"
           type="text"
           placeholder="Search your movie here!"
@@ -65,33 +65,33 @@ const SearchBox = () => {
             <Avatar
               src={`${data.currentUser.photoURL}`}
               sx={
-                dropBoxStatus === "hidden"
+                dropBoxStatus === 'hidden'
                   ? { width: 40, height: 40 }
                   : { width: 60, height: 60 }
               }
             />
           </div>
-        )}{" "}
-        {dropBoxStatus === "hidden" ? (
+        )}{' '}
+        {dropBoxStatus === 'hidden' ? (
           <span className="current-user">{`${
             data.currentUser === null
-              ? "Guest"
+              ? 'Guest'
               : data.currentUser.displayName === null
-              ? "User"
+              ? 'User'
               : data.currentUser.displayName.slice(
-                  data.currentUser.displayName.lastIndexOf(" ")
+                  data.currentUser.displayName.lastIndexOf(' '),
                 )
           }`}</span>
         ) : null}
       </div>
-      {dropBoxStatus === "show" ? (
+      {dropBoxStatus === 'show' ? (
         <div
           className="dropbox-searchBar"
           onMouseLeave={() => setTimeout(() => toggleDropBoxStatus(), 1000)}
         >
           <DropBox
             name={
-              data.currentUser === null ? "Guest" : data.currentUser.displayName
+              data.currentUser === null ? 'Guest' : data.currentUser.displayName
             }
           />
         </div>
