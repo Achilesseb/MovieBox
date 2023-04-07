@@ -8,7 +8,7 @@ const MBCard = ({ movie }) => {
   const onLoad = () => {
     setLoading(false);
   };
-
+  console.log(process.env);
   return (
     <Grid
       item
