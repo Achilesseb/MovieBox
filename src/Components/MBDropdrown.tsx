@@ -9,7 +9,7 @@ export const MBCustomDropdown = ({ data }) => {
         {data
           .filter((_movie, index: number) => index < 6)
           .map(movie => (
-            <MBCUstomListItem itemData={movie} />
+            <MBCUstomListItem key="1" itemData={movie} />
           ))}
       </div>
     </div>

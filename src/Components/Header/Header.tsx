@@ -4,8 +4,6 @@ import { ReactElement } from 'react';
 import { customHeadersOptions } from '../../constants/customVariables';
 import { MBCustomHeaderTab } from '../MBHeaderTab';
 
-// };
-
 export const MBHeader = () => {
   const appLabelWidth = 380;
   const divider = appLabelWidth / 12;
@@ -47,10 +45,9 @@ export const MBHeader = () => {
         {customHeadersOptions.map(option => (
           <MBCustomHeaderTab
             key={option.key}
-            children={option.label}
             type="primary"
             redirect={option.redirect}
-          />
+          >{option.label}</MBCustomHeaderTab>
         ))}
       </div>
     </>
