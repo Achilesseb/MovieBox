@@ -18,6 +18,7 @@
     "firebase": "^9.19.1",
     "firestore": "^1.1.6",
     "next": "latest",
+    "prettier": "^2.8.7",
     "react": "latest",
     "react-dom": "latest",
     "react-query": "^3.39.3",
@@ -58,6 +59,7 @@
     "autoprefixer": "^10.4.14",
     "eslint": "^8.38.0",
     "eslint-config-next": "^13.3.0",
+    "eslint-config-prettier": "^8.8.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.1"
   }

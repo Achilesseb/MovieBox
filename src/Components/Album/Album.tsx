@@ -11,21 +11,16 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import MBCard from '../Card/Card';
-import './Album.styles.scss';
+import './Album.module.scss';
 
+type AlbumPropTypes = {
+  data: [];
+  label: string;
+};
 const theme = createTheme();
 
-const Album = props => {
-  const data = props.props[0];
+const Album = ({ data, label }) => {
   console.log(data);
-
-  const [pageMovies, setPageMovies] = useState((pageNumber = 0) =>
-    data[0].results.slice(pageNumber * 6, (pageNumber + 1) * 6),
-  );
-  const handleClickEvent = (_event, newPage: number) => {
-    const pageNumber = newPage - 1;
-    setPageMovies(data[0].results.slice(pageNumber * 6, (pageNumber + 1) * 6));
-  };
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -36,7 +31,7 @@ const Album = props => {
         <Toolbar className="album-tab" sx={{ zIndex: '0' }}>
           {/* <MovieFilterIcon sx={{ mr: 2 }} /> */}
           <Typography variant="h5" color="inherit" noWrap>
-            {props.props[1]}
+            {label}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -59,7 +54,7 @@ const Album = props => {
               overflow: 'hidden',
             }}
           >
-            {pageMovies.map(movie => (
+            {data.map(movie => (
               <MBCard movie={movie} key={movie.id} />
             ))}
           </Grid>
@@ -67,8 +62,8 @@ const Album = props => {
             hidePrevButton
             hideNextButton
             className="album-pagination"
-            count={Math.ceil(data[0].results.length / 6)}
-            onChange={handleClickEvent}
+            count={Math.ceil(data.length / 6)}
+            // onChange={handleClickEvent}
           />
         </Container>
       </main>

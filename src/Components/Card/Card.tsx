@@ -1,7 +1,7 @@
 import { Grid, CardMedia, CardContent, Typography } from '@mui/material';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Card.styles.scss';
+
+import './Card.module.scss';
 
 const MBCard = ({ movie }) => {
   const [loading, setLoading] = useState(true);
@@ -19,14 +19,14 @@ const MBCard = ({ movie }) => {
         display: 'flex',
       }}
     >
-      <Link to={`${movie.id}`} className="card">
+      <div className="card">
         {loading && <h1>Loading</h1>}
         <CardMedia
           component="img"
           sx={{
             display: loading ? 'none' : 'unset',
           }}
-          image={`${process.env.REACT_APP_IMAGE_API_URL}${movie.poster_path}`}
+          image={`${process.env.NEXT_PUBLIC_IMAGE_API_URL}${movie.poster_path}`}
           alt="random"
           onLoad={onLoad}
         />
@@ -35,7 +35,7 @@ const MBCard = ({ movie }) => {
             {movie.title}
           </Typography>
         </CardContent>
-      </Link>
+      </div>
     </Grid>
   );
 };

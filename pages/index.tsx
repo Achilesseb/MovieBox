@@ -1,21 +1,7 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-// import './App.scss';
-import { Provider } from 'react-redux';
-// import MBLayout from './Components/Layout/Layout';
-import { BrowserRouter } from 'react-router-dom';
+import { HomePage } from '../src/Components/Dashboard/HomePage/HomePage';
 
-function App() {
-  const queryClient = new QueryClient();
+const Home = () => {
+  return <HomePage />;
+};
 
-  return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        {/* <Provider store={store}> */}
-        {/* <MBLayout /> */}
-        {/* </Provider> */}
-      </QueryClientProvider>
-    </BrowserRouter>
-  );
-}
-
-export default App;
+export default Home;

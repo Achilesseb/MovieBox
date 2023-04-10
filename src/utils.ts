@@ -1,5 +1,5 @@
-const MAIN_URL = process.env.REACT_APP_API_URL;
-const API_KEY = process.env.REACT_APP_API_KEY;
+const MAIN_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const POPULAR_URL = `${MAIN_URL}/movie/popular?api_key=${API_KEY}&region=RO&page=1`;
 const TOPRATED_URL = `${MAIN_URL}/movie/top_rated?api_key=${API_KEY}&region=RO&page=1`;
 const SEARCH_MOVIE_URL = `${MAIN_URL}/search/movie`;
