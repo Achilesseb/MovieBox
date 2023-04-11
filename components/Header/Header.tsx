@@ -39,7 +39,9 @@ export const MBHeader = () => {
           </div>
         </div>
         {customHeadersOptions.map(option => (
-          <MBCustomButton key={option.key}>{option.label}</MBCustomButton>
+          <MBCustomButton type="primary" key={option.key}>
+            {option.label}
+          </MBCustomButton>
         ))}
       </div>
     </>

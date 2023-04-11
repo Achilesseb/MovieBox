@@ -1,4 +1,4 @@
-import { MBCUstomListItem } from './MBListItem';
+import { MBCUstomListItem } from '../../components/MBListItem';
 
 export const MBCustomDropdown = ({ data }) => {
   return (
