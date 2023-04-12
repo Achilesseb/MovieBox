@@ -1,0 +1,189 @@
+.search-bar {
+  display: flex;
+  width: 100%;
+  height: 10vh;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.header {
+  display: flex;
+  height: 6rem;
+  width: 100%;
+  justify-content: start;
+  background-color: #282c34;
+  margin-bottom: 4rem;
+}
+.courtain {
+  width: 100%;
+  height: 10vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+
+  & ~ a > span {
+    opacity: 0.1;
+  }
+}
+
+@keyframes item-hover {
+  from {
+    background-image: linear-gradient(
+      360deg,
+      transparent 10%,
+      #2196f3,
+      rgb(0, 255, 255)
+    );
+  }
+  to {
+    background-image: linear-gradient(
+      360deg,
+      transparent 10%,
+      #2196f3,
+      rgb(0, 255, 255)
+    );
+  }
+}
+
+@keyframes item-hover-off {
+  from {
+    background-color: #2195f354;
+  }
+  to {
+    background-color: #2196f3;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(1px);
+  }
+  10% {
+    transform: translateX(-1px);
+  }
+  20% {
+    transform: translateX(-1px);
+  }
+  30% {
+    transform: translateX(1px);
+  }
+  40%,
+  80% {
+    transform: translateX(-1px);
+  }
+
+  90% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(1px);
+  }
+}
+
+.courtain:hover {
+  & ~ div {
+    transition: opacity 2s;
+    opacity: 1;
+  }
+}
+
+.courtain:hover > .courtain-right {
+  transition: cubic-bezier(0.79, 0.39, 0.79, 0.39);
+  transition-property: all;
+  transition-duration: 1.5s;
+  transform: translateX(70%);
+  gap: 0.1rem;
+  overflow: hidden;
+  & .courtain-element {
+    animation: item-hover 5s, wave 10s infinite;
+  }
+}
+
+.courtain:hover > .courtain-left {
+  transition: cubic-bezier(0.79, 0.39, 0.79, 0.39);
+  transition-property: all;
+  transition-duration: 1.5s;
+  transform: translateX(-70%);
+  gap: 0.1rem;
+  overflow: hidden;
+  & .courtain-element {
+    animation: item-hover 5s, wave 10s infinite;
+  }
+}
+
+.courtain-right {
+  display: flex;
+  position: absolute;
+  right: 0;
+  width: 49%;
+  height: 10vh;
+  gap: 0.3rem;
+  justify-content: flex-start;
+  transition: cubic-bezier(0.79, 0.39, 0.79, 0.39);
+  transition-property: all;
+  transition-duration: 1.5s;
+  & .courtain-element:nth-child(even) {
+    animation-delay: 0.5s;
+  }
+  & .courtain-element:nth-child(odd) {
+    animation-delay: 0.75s;
+  }
+}
+
+.courtain-left {
+  display: flex;
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 10vh;
+  gap: 0.3rem;
+  justify-content: flex-end;
+  transition: cubic-bezier(0.79, 0.39, 0.79, 0.39);
+  transition-property: all;
+  transition-duration: 1.5s;
+  & .courtain-element:nth-child(even) {
+    animation-delay: 0.5s;
+  }
+  & .courtain-element:nth-child(odd) {
+    animation-delay: 0.75s;
+  }
+}
+
+.courtain-element {
+  background-image: linear-gradient(
+    360deg,
+    transparent 10%,
+    #2196f3,
+    rgb(0, 255, 255)
+  );
+  width: 1rem;
+  height: 10vh;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  animation: wave 10s ease-in-out infinite;
+}
+// relative flex h-full w-full items-center justify-center text-5xl font-semibold leading-6 tracking-wide text-blue-500 before:opacity-0 after:opacity-90 hover:opacity-100
+.logo {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2196f3;
+  opacity: 0.1;
+  transition: opacity 2s;
+}
+.logo-first {
+  color: white;
+}
+
+.courtain-container {
+  position: relative;
+  height: 100%;
+  width: 300px;
+}

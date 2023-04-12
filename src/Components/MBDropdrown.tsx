@@ -1,4 +1,4 @@
-import { MBCUstomListItem } from './MBListItem';
+import { MBCUstomListItem } from '../../components/MBListItem';
 
 export const MBCustomDropdown = ({ data }) => {
   return (
@@ -9,7 +9,7 @@ export const MBCustomDropdown = ({ data }) => {
         {data
           .filter((_movie, index: number) => index < 6)
           .map(movie => (
-            <MBCUstomListItem itemData={movie} />
+            <MBCUstomListItem key="1" itemData={movie} />
           ))}
       </div>
     </div>
