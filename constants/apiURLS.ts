@@ -1,0 +1,10 @@
+export const MAIN_URL = process.env.NEXT_PUBLIC_API_URL;
+export const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+export const DEFAULT_URL = `${MAIN_URL}/movie/popular?api_key=${API_KEY}&region=RO`;
+export const POPULAR_URL = `${MAIN_URL}/movie/popular?api_key=${API_KEY}&region=RO&page=1`;
+export const TOPRATED_URL = `${MAIN_URL}/movie/top_rated?api_key=${API_KEY}&region=RO&page=1`;
+export const SEARCH_MOVIE_URL = `${MAIN_URL}/search/movie`;
+export const MOVIE_URL = `${MAIN_URL}/movie`;
+export const TRENDING_URL = `${MAIN_URL}/trending`;
+export const TRENDING_MOVIES_URL = `${TRENDING_URL}/movie/day?api_key=${API_KEY}`;
+export const TRENDING_TV_URL = `${TRENDING_URL}/tv/day?api_key=${API_KEY}`;

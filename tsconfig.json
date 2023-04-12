@@ -7,12 +7,12 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "module": "ES6",
+    "module": "esnext",
     "moduleResolution": "node",
     "strictNullChecks": true,
     "sourceMap": true,
     "declaration": true,
-    "outDir": "build",
+    "outDir": ".next",
     "removeComments": true,
     "alwaysStrict": false,
     "allowUnreachableCode": false,
@@ -26,8 +26,20 @@
     "isolatedModules": true,
     "incremental": true,
     "checkJs": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "noEmit": true,
+    "resolveJsonModule": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "./src/**/*.ts", "src/**/*.d.ts"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "./src/**/*.ts",
+    "src/**/*.d.ts",
+    "./*/**/*.ts",
+    "./*/**/*.tsx",
+    "./pages/*.ts",
+    "./pages/*.tsx"
+  ],
   "exclude": ["node_modules", "build"]
 }

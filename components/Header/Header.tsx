@@ -1,10 +1,7 @@
-import { Link } from 'react-router-dom';
-import './header.styles.scss';
+import styles from './Header.module.scss';
 import { ReactElement } from 'react';
 import { customHeadersOptions } from '../../constants/customVariables';
-import { MBCustomHeaderTab } from '../MBHeaderTab';
-
-// };
+import { MBCustomButton } from '../CustomButton/MBCustomButton';
 
 export const MBHeader = () => {
   const appLabelWidth = 380;
@@ -15,42 +12,36 @@ export const MBHeader = () => {
     elements.push(
       <i
         key={`courtain-element${i}`}
-        className="courtain-element"
+        className={styles['courtain-element']}
         style={{ right: `${i * 12}px` }}
       ></i>,
     );
   }
   return (
     <>
-      <div className="header">
-        <div className="relative h-full w-[380px]">
-          <div className="courtain">
-            <div className="courtain-left">
+      <div className={styles.header}>
+        <div className={styles['courtain-container']}>
+          <div className={styles.courtain}>
+            <div className={styles['courtain-left']}>
               {elements
                 .filter((_element, index) => index < 6)
                 .map(element => element)}
             </div>
-            <div className="courtain-right">
+            <div className={styles['courtain-right']}>
               {elements
                 .filter((_element, index) => index < 6)
                 .map(element => element)}
             </div>
           </div>
-          <Link
-            to="/homepage"
-            className="relative flex h-full w-full items-center justify-center text-5xl font-semibold leading-6 tracking-wide text-blue-500 before:opacity-0 after:opacity-90 hover:opacity-100"
-          >
-            <span className="text-white">Movie</span>
+          <div className={`${styles['logo']}`}>
+            <span className={styles['logo-first']}>Movie</span>
             <span>Box</span>
-          </Link>
+          </div>
         </div>
         {customHeadersOptions.map(option => (
-          <MBCustomHeaderTab
-            key={option.key}
-            children={option.label}
-            type="primary"
-            redirect={option.redirect}
-          />
+          <MBCustomButton type="primary" key={option.key}>
+            {option.label}
+          </MBCustomButton>
         ))}
       </div>
     </>

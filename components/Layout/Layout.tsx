@@ -1,15 +1,17 @@
 import { MBHeader } from '../Header/Header';
-import { HomePage } from '../Dashboard/HomePage/HomePage';
 import MBFooter from '../Footer/Footer';
 import MBMainFrame from '../MainFrame';
+import { ReactNode } from 'react';
 
-const MBLayout = () => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const MBLayout = ({ children }: LayoutProps) => {
   return (
     <>
       <MBHeader />
-      <MBMainFrame>
-        <HomePage />
-      </MBMainFrame>
+      <MBMainFrame>{children}</MBMainFrame>
       <MBFooter />
     </>
   );
