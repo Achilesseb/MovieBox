@@ -31,3 +31,7 @@ export const customHeadersOptions: Array<HeadersOptionsType> = [
     redirect: '/favorites',
   },
 ];
+
+export enum CustomPaginationOptions {
+  N6 = 6,
+}

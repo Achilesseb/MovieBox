@@ -1,17 +1,35 @@
 import './HomePage.module.scss';
 import Album from '../Album/Album';
-import {
-  POPULAR_URL,
-  TOPRATED_URL,
-  TRENDING_MOVIES_URL,
-  TRENDING_TV_URL,
-} from '../../constants/apiURLS';
 
+import { MBToggleBar } from '../ToggleBar';
+import { useEffect, useState } from 'react';
+import { TRENDING_MEDIA } from '../../constants/apiURLS';
+
+const toggleOptions = {
+  movie: 'Movies',
+  tv: 'TV Series',
+};
 export const HomePage = () => {
+  const [selectedToggleOptions, setSelectedToggleOption] =
+    useState<string>('movie');
+
+  const [dataURL, setDataURL] = useState<string>(
+    TRENDING_MEDIA.toString().replace('<MEDIA_TYPE>', selectedToggleOptions),
+  );
+
+  useEffect(() => {
+    setDataURL(
+      TRENDING_MEDIA.replace('<MEDIA_TYPE>', selectedToggleOptions).toString(),
+    );
+  }, [selectedToggleOptions]);
+
   return (
-    <div className="MB-landingPage">
-      <Album label="Trending Movies" URL={TRENDING_MOVIES_URL} />
-      <Album label="Trending TV Series" URL={TRENDING_TV_URL} />
+    <div className="flex flex-col gap-6">
+      <MBToggleBar options={toggleOptions} callback={setSelectedToggleOption} />
+      <Album
+        label={`Trending ${toggleOptions[selectedToggleOptions]}`}
+        dataURL={dataURL}
+      />
     </div>
   );
 };

@@ -6,5 +6,5 @@ export const TOPRATED_URL = `${MAIN_URL}/movie/top_rated?api_key=${API_KEY}&regi
 export const SEARCH_MOVIE_URL = `${MAIN_URL}/search/movie`;
 export const MOVIE_URL = `${MAIN_URL}/movie`;
 export const TRENDING_URL = `${MAIN_URL}/trending`;
-export const TRENDING_MOVIES_URL = `${TRENDING_URL}/movie/day?api_key=${API_KEY}`;
-export const TRENDING_TV_URL = `${TRENDING_URL}/tv/day?api_key=${API_KEY}`;
+export const TRENDING_MEDIA = `${TRENDING_URL}/<MEDIA_TYPE>/day?api_key=${API_KEY}`;
+// export const TRENDING_TV_URL = `${TRENDING_URL}/<MEDIA_TYPE>/day?api_key=${API_KEY}`;

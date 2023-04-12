@@ -12,6 +12,9 @@ module.exports = {
         MBheader: '#282c34',
         MBborderHeight: '0.3rem',
       },
+      borderColor: {
+        MBheader: '#282c34',
+      },
       fontFamily: {
         heading: ['PT Serif', 'serif'],
       },

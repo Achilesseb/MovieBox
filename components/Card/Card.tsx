@@ -11,7 +11,7 @@ const MBCard = ({ data }) => {
   };
 
   return (
-    <div className={`${styles.card} `}>
+    <div className="card">
       {loading && <h1>Loading</h1>}
       <Image
         src={`${process.env.NEXT_PUBLIC_IMAGE_API_URL}${data.poster_path}`}
