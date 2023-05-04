@@ -1,27 +1,28 @@
-import React from "react";
-import "./introPage.styles.scss";
-
+import React from 'react';
+import './introPage.styles.scss';
+import { importAllImages } from '../../utils/imageHandlers';
 
 const IntroPage = () => {
-  function importAll(r) {
-    let images = {};
-    r.keys().map((item, index) => (images[item.replace("./", "")] = r(item)));
-    return images;
-  }
-  const images = importAll(
-    require.context("./Posters", false, /\.(png|jpe?g|svg)$/)
+  const images = importAllImages(
+    require.context('./Posters', false, /\.(png|jpe?g|svg)$/),
   );
+
   const imagesUrl = Object.values(images);
 
   return (
     <div className="intro-box">
       <h1 className="intro-message">
         <span className="intro-highlight-message">The&nbsp;MOVIE</span>
-        {" library you always needed"}
+        {' library you always needed'}
       </h1>
       <div className="intro-collection-posters">
         {imagesUrl.map((image, index) => (
-          <img src={`${image}`} className="intro-poster" key={index} />
+          <img
+            src={`${image}`}
+            className="intro-poster"
+            key={index}
+            alt={`${image}`}
+          />
         ))}
       </div>
     </div>

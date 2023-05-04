@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import "./rating-component.styles.scss";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import './rating-component.styles.scss';
 
 const Rating = () => {
-  const data = useSelector((data) => data.Ratings);
+  const data = useSelector(data => data.Ratings);
   console.log(data);
   const RaitingView = () =>
-    data.map((data) => {
+    data.map(data => {
       const ratingLabel = data.Source;
       const ratingValue = data.Value;
 
       return (
-        <div className="card-container">
+        <div key={data.value} className="card-container">
           <div className="card-container name">{ratingLabel}</div>
           <div className="card-container name">{ratingValue}</div>
         </div>
