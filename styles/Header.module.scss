@@ -5,6 +5,15 @@
   align-items: center;
   justify-content: space-evenly;
 }
+.header {
+  // flex h-[6rem] w-full justify-start bg-[#1b1b1bef]
+  display: flex;
+  height: 6rem;
+  width: 100%;
+  justify-content: start;
+  background-color: var(--MBHeader);
+  margin-bottom: 4rem;
+}
 .courtain {
   width: 100%;
   height: 10vh;

@@ -1,5 +1,5 @@
 const MBFooter = () => {
-  return <>Salut</>;
+  return <></>;
 };
 
 export default MBFooter;
